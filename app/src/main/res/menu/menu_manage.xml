@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="menu"
+        android:id="@+id/menu_menu"
+        android:icon="@drawable/ic_restaurant_menu_black_24dp"
+        app:showAsAction="ifRoom"/>
+    <item android:title="hóa đơn"
+        android:id="@+id/menu_bill"/>
+    <item android:title="quản lý"
+        android:id="@+id/menu_manage"/>
+    <item android:title="search"
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/menu_add"
+        android:title="them mon"/>
+</menu>
