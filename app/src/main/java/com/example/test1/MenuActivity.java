@@ -17,16 +17,18 @@ public class MenuActivity extends AppCompatActivity {
     private ArrayList<Item>itemArrayList;
     private CustomAdapter<Item>customAdapter;
     private ListView lvItem;
-    private  String name="";
+    private  String tv1="";
+    private String tv2="";
+    private String tv3="";
     private  int price=0;
-    //Button btnAdd;
+    Button btnAdd;
     //EditText edtBan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         lvItem = (ListView) findViewById(R.id.lv_menu);
-        //btnAdd = (Button) findViewById(R.id.btn_add);
+        btnAdd = (Button) findViewById(R.id.btn_add);
         //edtBan=(EditText)findViewById(R.id.edt_id);
         itemArrayList = new ArrayList<>();
         itemArrayList.add(new Item(Item.ID, "Chân gà xả tắc", "20000", R.drawable.changa));
@@ -42,37 +44,30 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Item item = (Item) adapterView.getItemAtPosition(position);
-                name = "" + name + item.getName() + "\n";
+                tv1 = "" + tv1 + item.getName() + "\n"+"\n";
+                tv3=""+tv3+item.getPrice()+"\n"+"\n";
                 price = price + Integer.parseInt(item.getPrice());
 
             }
         });
-    }
-       /* btnAdd.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ban=edtBan.getText().toString();
-                if(ban.equals("")){
-                    Toast.makeText(MenuActivity.this,"Bạn phải nhập số bàn",Toast.LENGTH_LONG).show();
 
-                }
-                else {
-                    name="Số bàn: "+ban+"\n"+name;
-                    Intent intent = new Intent(MenuActivity.this, BillActivity.class);
-                    //intent.putExtra("ban", ban);
-                    Item item = new Item();
-                    item.setName(name);
-                    String price1=String.valueOf(price);
-                    price1="Tổng tiền:"+price1;
-                    item.setPrice(price1);
-                    MainActivity.db.addItem(item);
-                    name="";
-                    price=0;
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(MenuActivity.this, BillActivity.class);
+                tv1=""+tv1+"Tổng tiền:";
+                intent.putExtra("tv1", tv1);
+                String a=String.valueOf(price);
+                tv3=""+tv3+a;
+                intent.putExtra("tv3",tv3);
+                tv1="";
+                tv3="";
+                price=0;
+                startActivity(intent);
+
             }
         });
 
     }
-    //customAdapter.notifyDataSetChanged();*/
+
 }

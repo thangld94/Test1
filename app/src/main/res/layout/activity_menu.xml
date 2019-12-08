@@ -8,13 +8,23 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     tools:context=".MenuActivity">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MENU"
         android:textSize="30dp"
         android:gravity="center"/>
-
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/btn_add"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="150dp"
+        android:text="Lưu"
+        android:textColor="@color/colorAccent"
+        android:textSize="18dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
