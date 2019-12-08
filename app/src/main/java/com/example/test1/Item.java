@@ -7,11 +7,28 @@ public class Item implements Serializable {
     private int id;
     String name;
     String price;
+    int imageId;
 
-    public Item(int ID,String name, String price) {
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    public Item(int ID, String name, String price, int imageId) {
         this.id=ID;
         this.name = name;
         this.price = price;
+        this.imageId=imageId;
+        Item.ID++;
+    }
+    public Item(int ID, String name, String price) {
+        this.id=ID;
+        this.name = name;
+        this.price = price;
+
         Item.ID++;
     }
     public Item(){

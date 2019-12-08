@@ -15,7 +15,8 @@ public class BillActivity extends AppCompatActivity {
     ListView lvBill;
     private ArrayList<Item>arrItem;
     private ArrayList<String>lv;
-    private ArrayAdapter<String>adapter;
+    //private ArrayAdapter<String>adapter;
+    private CustomAdapter<Item>customAdapter;
     private int i=0;
 
     @Override
@@ -25,20 +26,9 @@ public class BillActivity extends AppCompatActivity {
         lvBill =(ListView) findViewById(R.id.lv_bill);
 
         lv=new ArrayList<>();
-        adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,lv);
-        lvBill.setAdapter(adapter);
-
-        arrItem=MainActivity.db.getAllItem();
-        Intent intent =getIntent();
-        if(intent!=null){
-            lv.add("So ban:"+intent.getStringExtra("ban")+"\n"+arrItem.get(i).getName()+"\n"+"Tong tien:"+arrItem.get(i).getPrice() );
-            i++;
-            adapter.notifyDataSetChanged();
-        }
-
-
-
-
+       arrItem=MainActivity.db.getAllItem();
+       customAdapter=new CustomAdapter<>(this,R.layout.row_listview,arrItem);
+       lvBill.setAdapter(customAdapter);
 
 
     }

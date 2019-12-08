@@ -93,5 +93,18 @@ class MyDatabase extends SQLiteOpenHelper {
 
         return db.update(TABLE_NAME,values,ID +"=?",new String[] { String.valueOf(item.getId())});
     }
+    public Item getItemById(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[] { ID,
+                        NAME, PRICE}, ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Item item = new Item(Item.ID,cursor.getString(1),cursor.getString(2));
+        cursor.close();
+        db.close();
+        return item;
+    }
 
 }

@@ -1,11 +1,12 @@
 
-        package com.example.test1;
+package com.example.test1;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class CustomAdapter<C> extends ArrayAdapter<Item> {
             viewHoder=new ViewHoder();
             viewHoder.tvName=(TextView)convertView.findViewById(R.id.tv_name);
             viewHoder.tvPrice=(TextView)convertView.findViewById(R.id.tv_price);
+            viewHoder.image=(ImageView)convertView.findViewById(R.id.image);
             convertView.setTag(viewHoder);
 
         }
@@ -46,11 +48,13 @@ public class CustomAdapter<C> extends ArrayAdapter<Item> {
         Item item=ArrItem.get(position);
         viewHoder.tvName.setText(item.getName());
         viewHoder.tvPrice.setText(item.getPrice());
+        viewHoder.image.setImageResource(item.getImageId());
         return convertView;
     }
     public class ViewHoder{
         TextView tvName;
         TextView tvPrice;
+        ImageView image;
 
     }
 }
