@@ -1,27 +1,59 @@
+
 package com.example.test1;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class CustomManage extends BaseAdapter {
-    @Override
-    public int getCount() {
-        return 0;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class CustomManage <C> extends ArrayAdapter<Bill> {
+    Context context;
+    int resource ;
+    ArrayList<Bill>ArrBill;
+
+    public CustomManage (@NonNull Context context, int resource, @NonNull ArrayList<Bill> ArrBill) {
+        super(context,resource,ArrBill);
+        this.context=context;
+        this.resource=resource;
+        this.ArrBill=ArrBill;
+
     }
 
+    @NonNull
     @Override
-    public Object getItem(int i) {
-        return null;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        ViewHoder viewHoder;
+        if(convertView==null){
+            convertView= LayoutInflater.from(context).inflate(R.layout.bill_listview,parent,false);
+            viewHoder=new ViewHoder();
+            viewHoder.tv1=(TextView)convertView.findViewById(R.id.tv1);
+            viewHoder.tv2=(TextView)convertView.findViewById(R.id.tv2);
+            viewHoder.tv3=(TextView)convertView.findViewById(R.id.tv3);
+            convertView.setTag(viewHoder);
 
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
+        }
+        else {
+            viewHoder=(ViewHoder)convertView.getTag();
+        }
+        Bill bill=ArrBill.get(position);
+        viewHoder.tv1.setText(bill.getTv1());
+        viewHoder.tv2.setText(bill.getTv2());
+        viewHoder.tv3.setText(bill.getTv3());
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+        return convertView;
+    }
+    public class ViewHoder{
+       TextView tv1,tv2,tv3;
+
     }
 }

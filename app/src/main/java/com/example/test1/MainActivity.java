@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout manhinh;
-    public static MyDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         manhinh=(LinearLayout)findViewById(R.id.manHinh);
         manhinh.setBackgroundResource(R.drawable.nnn);
-        db=new MyDatabase(this);
+
     }
 
     @Override
@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent1);
                 break;
             case R.id.menu_manage:
+                Intent intent2=new Intent(MainActivity.this,ManageActivity.class);
+                startActivity(intent2);
             case R.id.menu_search:
 
 
