@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
     private  int price=0;
     private  int temp=0;
     Button btnAdd;
-    //EditText edtBan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +40,18 @@ public class MenuActivity extends AppCompatActivity {
         lvItem = (ListView) findViewById(R.id.lv_menu);
         btnAdd = (Button) findViewById(R.id.btn_add);
         ban=(EditText)findViewById(R.id.edt_id);
-        //edtBan=(EditText)findViewById(R.id.edt_id);
         itemArrayList = new ArrayList<>();
         itemArrayList.add(new Item(Item.ID, "Chân gà xả tắc", "20000", R.drawable.changa));
-        itemArrayList.add(new Item(Item.ID, "Nem chua rán", "25000", R.drawable.nemchuaran));
-        itemArrayList.add(new Item(Item.ID, "Bánh tráng trộn", "10000", R.drawable.banhtrang));
+        itemArrayList.add(new Item(Item.ID, "Bánh tráng trộn", "15000", R.drawable.banhtrang));
         itemArrayList.add(new Item(Item.ID, "Xoài lắc", "20000", R.drawable.xoailac));
         itemArrayList.add(new Item(Item.ID, "Tai heo trộn", "30000", R.drawable.taiheo));
+        itemArrayList.add(new Item(Item.ID, "Bánh xèo", "40000", R.drawable.banh_xeo));
+        itemArrayList.add(new Item(Item.ID, "Bún đậu mắm tôm", "30000", R.drawable.bun_dau));
+        itemArrayList.add(new Item(Item.ID, "Mì xào", "50000", R.drawable.mi_xao));
+        itemArrayList.add(new Item(Item.ID, "Ốc hút", "30000", R.drawable.oc_hut));
+        itemArrayList.add(new Item(Item.ID, "Phô mai que", "25000", R.drawable.pho_mai));
         customAdapter = new CustomAdapter<>(this, R.layout.row_listview, itemArrayList);
         lvItem.setAdapter(customAdapter);
-
-
         lvItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
