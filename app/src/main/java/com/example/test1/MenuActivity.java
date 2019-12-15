@@ -14,7 +14,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MenuActivity extends AppCompatActivity {
     private ArrayList<Item>itemArrayList;
@@ -22,8 +25,8 @@ public class MenuActivity extends AppCompatActivity {
     private ListView lvItem;
     private EditText ban;
     private  String tv1="Tên món\n\n";
-    private String tv2="Số lượng\n\n\n\n";
-    private String tv3="Thành tiền\n\n\n\n";
+    private String tv2="\n\nSố lượng\n\n";
+    private String tv3="\n\nThành tiền\n\n";
     private  int price=0;
     private  int temp=0;
     Button btnAdd;
@@ -66,16 +69,20 @@ public class MenuActivity extends AppCompatActivity {
                     Toast.makeText(MenuActivity.this,"Bạn phải nhập số bàn",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    tv1 = "Số bàn: " + so_ban + "\n\n" + tv1 + "Tổng tiền:\n\n";
-                    intent.putExtra("tv1", tv1);
+                    DateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd  hh:mm:ss");
+                    dateFormatter.setLenient(false);
+                    Date today = new Date();
+                    String s = dateFormatter.format(today);
+                    tv1 = "Số bàn: " + so_ban +"\n\n" + tv1 + "Tổng tiền:";
                     String a = String.valueOf(price);
-                    tv3 = "" + tv3 + a + "\n\n";
-                    tv2 = tv2 + "\n\n";
+                    tv3 = "" + tv3 + a ;
+                    intent.putExtra("time_in",s);
+                    intent.putExtra("tv1", tv1);
                     intent.putExtra("tv3", tv3);
                     intent.putExtra("tv2", tv2);
                     tv1 = "Tên món\n\n";
-                    tv3 = "Thành tiền\n\n\n\n";
-                    tv2 = "Số lượng\n\n\n\n";
+                    tv3 = "Thành tiền\n\n";
+                    tv2 = "\n\nSố lượng\n\n";
                     price = 0;
                     startActivity(intent);
                 }

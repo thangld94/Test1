@@ -1,12 +1,35 @@
 package com.example.test1;
 
 public class Bill {
-    String tv1,tv2,tv3;
+    String tv1;
+    String tv2;
+    String tv3;
+    String time_in;
 
-    public Bill(String tv1, String tv2, String tv3) {
+    public String getTime_in() {
+        return time_in;
+    }
+
+    public void setTime_in(String time_in) {
+        this.time_in = time_in;
+    }
+
+    public String getTime_out() {
+        return time_out;
+    }
+
+    public void setTime_out(String time_out) {
+        this.time_out = time_out;
+    }
+
+    String time_out;
+
+    public Bill(String tv1, String tv2, String tv3,String time_in, String time_out) {
         this.tv1 = tv1;
         this.tv2 = tv2;
         this.tv3 = tv3;
+        this.time_in=time_in;
+        this.time_out=time_out;
     }
     public Bill(){}
 

@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             case R.id.menu_search:
 
-
         }
         return super.onOptionsItemSelected(item);
     }
